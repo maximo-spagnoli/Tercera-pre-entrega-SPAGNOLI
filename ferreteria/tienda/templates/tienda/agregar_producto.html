@@ -1,0 +1,14 @@
+<!-- tienda/templates/tienda/agregar_producto.html -->
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+<h2>Agregar Producto</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+
+<!-- Añadir un margen inferior para evitar que el footer se superponga -->
+<div style="margin-bottom: 100px;"></div>
+{% endblock %}

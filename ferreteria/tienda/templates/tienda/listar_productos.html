@@ -1,0 +1,23 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+<h2>Lista de Productos</h2>
+<ul>
+    {% for producto in productos %}
+        <li>
+            {{ producto.nombre }} - ${{ producto.precio }}
+            <a href="{% url 'modificar_producto' producto.id %}">
+                <button style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+                    Modificar
+                </button>
+            </a>
+            <a href="{% url 'eliminar_producto' producto.id %}">
+                <button style="background-color: #FF0000; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+                    Eliminar
+                </button>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
