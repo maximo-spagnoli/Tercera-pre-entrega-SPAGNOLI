@@ -1,13 +1,111 @@
 {% extends 'tienda/base.html' %}
 
+
+
 {% block content %}
-<div style="text-align: center;">
-    <img src="https://img.freepik.com/fotos-premium/banner-herramientas-construccion-sobre-fondo-negro-fines-mejora-hogar_176841-18161.jpg?w=826" alt="Banner Principal" style="max-width: 100%; height: auto;">
+<div class="separador">
+    <br>
 </div>
-<div style="text-align: center;">
-    <img src="https://img.freepik.com/fotos-premium/herramientas-negras-sobre-fondo-negro-generadas-ia_201606-7139.jpg?w=740" alt="Banner Principal" style="max-width: 100%; height: 100%;">
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="https://img.freepik.com/fotos-premium/banner-herramientas-construccion-sobre-fondo-negro-fines-mejora-hogar_176841-18161.jpg?w=826" class="d-block w-100" alt="Banner Principal" style="height: 400px; object-fit: cover;">
+        </div>
+        <div class="carousel-item">
+            <img src="https://img.freepik.com/fotos-premium/herramientas-negras-sobre-fondo-negro-generadas-ia_201606-7139.jpg?w=740" class="d-block w-100" alt="Banner Principal" style="height: 400px; object-fit: cover;">
+        </div>
+        <div class="carousel-item">
+            <img src="https://img.freepik.com/foto-gratis/conjunto-herramientas-kit-herramientas-aislado_1303-20319.jpg?t=st=1725166531~exp=1725170131~hmac=fb6efad2b3fe7245d0e80c8458fcb7734b54a55aab4459afaf3ad6ecacd18c51&w=740" class="d-block w-100" alt="Banner Principal" style="height: 400px; object-fit: cover;">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
-<div style="text-align: center;">
-    <img src="https://img.freepik.com/foto-gratis/conjunto-herramientas-kit-herramientas-aislado_1303-20319.jpg?t=st=1725166531~exp=1725170131~hmac=fb6efad2b3fe7245d0e80c8458fcb7734b54a55aab4459afaf3ad6ecacd18c51&w=740" alt="Banner Principal" style="max-width: 100%; height: 100%;">
+
+<!-- Sección de imágenes separadas -->
+<div class="image-row">
+    <div class="image-container">
+        <img src="https://scontent.fros2-2.fna.fbcdn.net/v/t39.30808-6/351464011_791458782557592_3002125732459050194_n.png?_nc_cat=1&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Lk5anPjEqDgQ7kNvgGxv9Ut&_nc_ht=scontent.fros2-2.fna&_nc_gid=AcAWQpv0xhHWaPlNbS6wktj&oh=00_AYCaF0aj9Cccmyzf_qYCz59ZnvnDtJwYjfQabf_DCKgMjQ&oe=66DD9310" alt="Imagen 1">
+        <div class="overlay">
+            <span>Innovar para la vida de la gente es uno de los objetivos de Bosch. 
+                Y esto no solo aplica a la hora de comercializar productos innovadores, sino de formar parte de proyectos que
+                 mejoren la vida de las personas.</span>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://scontent.fros2-2.fna.fbcdn.net/v/t39.30808-6/347254439_4730606873729970_8257680225728465064_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=UyrXys4A-awQ7kNvgEER1ph&_nc_ht=scontent.fros2-2.fna&_nc_gid=A7mB-0x6CrFxigBfzQWo7fv&oh=00_AYDeqMtH-yccY4OzQcKXhzyuwyNWuY4WW3uOrjlizTKRNg&oe=66DD7169" alt="Imagen 2">
+        <div class="overlay">
+            <span>Las herramientas de alimentación inalámula SKIL y los equipos de energía al aire libre están cubiertos
+                 por nuestra industria líder en garantía de 5 años. Así que puedes confiar en nosotros para entregar.</span>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://scontent.fros2-2.fna.fbcdn.net/v/t39.30808-6/313283996_170004832346960_7623944581855258794_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=Mw1n1sPU-S8Q7kNvgGKufSf&_nc_ht=scontent.fros2-2.fna&_nc_gid=AqZaROG6bIm9sQubKRo1GVK&oh=00_AYC412ubl_BJTjlIoxtLXAANibHkKbltnnUsBiddff4jEA&oe=66DD928E" alt="Imagen 3">
+        <div class="overlay">
+            <span>Dowen Pagio es el resultado de años de experiencia en el desarrollo y construcción de Herramientas Eléctricas, 
+                reconocido como innovador y fabricante, que ha posicionado la marca como líder del mercado Argentino y de la Región.</span>
+        </div>
+    </div>
+    <style>
+        .image-row {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        
+        .image-container {
+            position: relative;
+            width: 30%;
+            overflow: hidden; /* Esto asegura que las imágenes no se salgan de sus contenedores */
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.05); /* Agranda un poco la imagen al hacer hover */
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(128, 128, 128, 0.871); /* Color gris semitransparente */
+            color: rgb(0, 0, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image-container:hover .overlay {
+            opacity: 1; /* Hace visible la superposición al hacer hover */
+        }
+    </style>
+<div class="separador">
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+<div class="s">
+    <br>
 </div>
 {% endblock %}

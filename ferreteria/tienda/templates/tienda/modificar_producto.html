@@ -1,12 +1,11 @@
-<!-- tienda/templates/tienda/modificar_producto.html -->
 {% extends 'tienda/base.html' %}
 
 {% block content %}
-<h2>Modificar Producto</h2>
-<form method="post">
+  <h2>Modificar Producto</h2>
+  <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Guardar Cambios</button>
-</form>
-<div style="margin-bottom: 100px;"></div>
+    <button type="submit" class="btn btn-success">Guardar cambios</button>
+    <a href="{% url 'listar_productos' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
 {% endblock %}

@@ -1,0 +1,12 @@
+<!-- templates/profile.html -->
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+  <div class="profile-container">
+    <h2>Perfil de {{ user.username }}</h2>
+    <p><strong>Correo electrónico:</strong> {{ user.email }}</p>
+    <p><strong>¿Es administrador?</strong> {% if user.is_staff %} Sí {% else %} No {% endif %}</p>
+    
+    <a href="{% url 'editar_perfil' %}" class="btn btn-primary">Editar Información</a>
+  </div>
+{% endblock %}
