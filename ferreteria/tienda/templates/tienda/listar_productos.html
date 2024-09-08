@@ -2,6 +2,7 @@
 
 {% block content %}
   <h2>Lista de Productos</h2>
+  <a href="{% url 'agregar_producto' %}" class="btn btn-primary">Agregar Producto</a>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -27,5 +28,4 @@
       {% endfor %}
     </tbody>
   </table>
-  <a href="{% url 'agregar_producto' %}" class="btn btn-primary">Agregar Producto</a>
 {% endblock %}

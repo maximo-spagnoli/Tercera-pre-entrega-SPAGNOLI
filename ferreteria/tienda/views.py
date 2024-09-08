@@ -7,18 +7,16 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 
 
-
-
-#Vista del logout
+# Vista del logout
 def logout_view(request):
     logout(request)
     return redirect('inicio')
 
-#Vista del inicio
+# Vista del inicio
 def inicio(request):
     return render(request, 'tienda/inicio.html')
 
-#Vista login
+# Vista login
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -33,7 +31,7 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, 'tienda/login.html', {'form': form})
 
-#Vista register
+# Vista register
 def register_view(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
@@ -45,13 +43,13 @@ def register_view(request):
         form = CustomUserCreationForm()
     return render(request, 'tienda/register.html', {'form': form})
 
-# Vista para modificar un producto
+# Vista para listar productos
 @login_required
 def listar_productos(request):
     productos = Producto.objects.all()
     return render(request, 'tienda/listar_productos.html', {'productos': productos})
 
-@login_required
+# Vista para agregar un producto
 @staff_member_required
 def agregar_producto(request):
     if request.method == 'POST':
@@ -63,7 +61,7 @@ def agregar_producto(request):
         form = ProductoForm()
     return render(request, 'tienda/agregar_producto.html', {'form': form})
 
-@login_required
+# Vista para modificar un producto
 @staff_member_required
 def modificar_producto(request, id_producto):
     producto = get_object_or_404(Producto, id=id_producto)
@@ -74,9 +72,9 @@ def modificar_producto(request, id_producto):
             return redirect('listar_productos')
     else:
         form = ProductoForm(instance=producto)
-    return render(request, 'tienda/modificar_producto.html', {'form': form, 'producto': producto})
+    return render(request, 'tienda/modificar_producto.html', {'form': form})
 
-@login_required
+# Vista para eliminar un producto
 @staff_member_required
 def eliminar_producto(request, id_producto):
     producto = get_object_or_404(Producto, id=id_producto)
@@ -85,7 +83,8 @@ def eliminar_producto(request, id_producto):
         return redirect('listar_productos')
     return render(request, 'tienda/eliminar_producto.html', {'producto': producto})
 
-#Vista para busacr un producto
+# Vista para buscar un producto
+@login_required
 def buscar_producto(request):
     query = request.GET.get('q')
     if query:
@@ -94,26 +93,12 @@ def buscar_producto(request):
         productos = Producto.objects.all()
     return render(request, 'tienda/buscar_producto.html', {'productos': productos})
 
-
-@staff_member_required
-def agregar_producto(request):
-    # Lógica para agregar productos
-    pass
-
-@staff_member_required
-def modificar_producto(request, producto_id):
-    # Lógica para modificar productos
-    pass
-
-@staff_member_required
-def eliminar_producto(request, producto_id):
-    # Lógica para eliminar productos
-    pass
-
+# Vista para el perfil del usuario
 @login_required
 def profile_view(request):
     return render(request, 'tienda/profile.html', {'user': request.user})
 
+# Vista para editar el perfil del usuario
 @login_required
 def editar_perfil(request):
     if request.method == 'POST':
