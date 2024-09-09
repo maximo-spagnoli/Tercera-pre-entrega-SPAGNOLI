@@ -1,28 +1,35 @@
 from django import forms
 from .models import Producto
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 
-class CustomUserCreationForm(UserCreationForm):
-    is_staff = forms.BooleanField(required=False, label='¿Es administrador?')
-
+class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2', 'is_staff']
+        fields = ['username', 'email', 'first_name', 'last_name']  # Campos que quieres mostrar
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # Podrías personalizar el formulario según el contexto (ej. permisos)
-        if not self.current_user.is_superuser:
-            self.fields['is_staff'].widget = forms.HiddenInput()  # Ocultar para usuarios no superusuario
+class CustomUserCreationForm(UserCreationForm):
+    password1 = forms.CharField(
+        label="Contraseña",
+        widget=forms.PasswordInput,
+        help_text="La contraseña debe tener al menos 8 caracteres y no puede ser muy común.",
+    )
+    password2 = forms.CharField(
+        label="Confirmar Contraseña",
+        widget=forms.PasswordInput,
+        help_text="Por favor, introduce de nuevo la misma contraseña para verificarla.",
+    )
+    
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+        labels = {
+            'username': 'Nombre de Usuario',
+            'email': 'Correo Electrónico',
+            'password_based_authentication': 'Autenticación basada en contraseña',
+        }
 
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        if self.cleaned_data['is_staff']:
-            user.is_staff = True  # Marcar como administrador si corresponde
-        if commit:
-            user.save()
-        return user
+   
 
 class ProductoForm(forms.ModelForm):
     class Meta:

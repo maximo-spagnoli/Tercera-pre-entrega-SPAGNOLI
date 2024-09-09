@@ -1,6 +1,6 @@
 <!-- tienda/templates/tienda/base.html -->
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <link rel="shortcut icon" href="https://st2.depositphotos.com/4335005/7939/v/450/depositphotos_79399298-stock-illustration-vector-flat-icon.jpg" type="image/x-icon">
     <title>Ferretería Spagnoli</title>
@@ -117,11 +117,12 @@
 <nav>
   <ul>
     {% if user.is_authenticated %}
+    <a href="{% url 'inicio' %}">Inicio</a> |
       <a href="{% url 'profile' %}">Perfil</a> |
       <a href="{% url 'logout' %}">Cerrar Sesión</a> |
       <a href="{% url 'buscar_producto' %}">Buscar Producto</a> |
       {% if user.is_staff %}
-      <a href="{% url 'listar_productos' %}">Listado de Productos</a> |
+      <a href="{% url 'listar_productos' %}">Listado de Productos</a> 
         
       {% endif %}
     {% else %}

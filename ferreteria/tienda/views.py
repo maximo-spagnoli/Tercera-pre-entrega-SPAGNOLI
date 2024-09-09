@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Producto
-from .forms import ProductoForm, CustomUserCreationForm
+from .forms import ProductoForm, CustomUserChangeForm, CustomUserCreationForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm, UserChangeForm
 from django.contrib.admin.views.decorators import staff_member_required
@@ -102,10 +102,10 @@ def profile_view(request):
 @login_required
 def editar_perfil(request):
     if request.method == 'POST':
-        form = UserChangeForm(request.POST, instance=request.user)
+        form = CustomUserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
             return redirect('profile')
     else:
-        form = UserChangeForm(instance=request.user)
+        form = CustomUserChangeForm(instance=request.user)
     return render(request, 'tienda/editar_perfil.html', {'form': form})

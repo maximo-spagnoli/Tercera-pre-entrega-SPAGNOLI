@@ -1,13 +1,37 @@
-<!-- templates/editar_perfil.html -->
 {% extends 'tienda/base.html' %}
 
 {% block content %}
-  <div class="form-container">
+<br>
+<div class="form-container">
     <h2>Editar Perfil</h2>
     <form method="POST">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit" class="btn">Guardar Cambios</button>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Guardar Cambios</button>
     </form>
-  </div>
+</div>
+<style>
+  .form-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-container h2 {
+    text-align: center;
+  }
+
+  .form-container .btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+</style>
 {% endblock %}
