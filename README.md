@@ -17,7 +17,8 @@ Este proyecto es una tienda online para una ferretería.
 4. Acceder a la aplicación en `http://localhost:8000/`.
 
 ## Orden de Prueba
-1. Agregar un producto en el apartado "Agregar producto".
-2. Vizualisarlo dentro del apartado "Listado de productos".
-3. Entrar al apartado "Buscar producto" y buscar por su nombre o se puede buscar de forma abreviada por ejemplo = "tarugo" lo buscamos como "tar".
-   Igual traeria todos los que tengan en el inico de su nombre "tar", osea si hubiera mas tarugos cargados saldrian todos. 
+1. Loguearte o registrarte, asi su usuario se crea dentro de la Base de datos o se buscar y se le permite el
+   ingreso con sus debidos permisos. 
+2. Si es un usuario normal solo podra buscar productos con el buscador y no realizar otro tipo de acciones.
+3. Si es un usuario admin o con permisos, podra agregar/editar/eliminar productos a su parecer, al igual que un usuario normal
+   podra utlizar el buscador y ver los nuevos productos creados.
