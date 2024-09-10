@@ -86,11 +86,12 @@ def eliminar_producto(request, id_producto):
 # Vista para buscar un producto
 @login_required
 def buscar_producto(request):
-    query = request.GET.get('q')
+    query = request.GET.get('q', '')  # Obtén el término de búsqueda desde la URL
     if query:
-        productos = Producto.objects.filter(nombre__icontains=query)
+        productos = Producto.objects.filter(nombre__icontains=query)  # Filtra los productos
     else:
-        productos = Producto.objects.all()
+        productos = Producto.objects.all()  # Si no hay término de búsqueda, muestra todos los productos
+    
     return render(request, 'tienda/buscar_producto.html', {'productos': productos})
 
 # Vista para el perfil del usuario
@@ -109,3 +110,27 @@ def editar_perfil(request):
     else:
         form = CustomUserChangeForm(instance=request.user)
     return render(request, 'tienda/editar_perfil.html', {'form': form})
+
+#Vista del carrito
+def agregar_al_carrito(request, id_producto):
+    producto = Producto.objects.get(id=id_producto)
+    carrito = request.session.get('carrito', [])
+    carrito.append({'id': id_producto, 'nombre': producto.nombre, 'precio': producto.precio})
+    request.session['carrito'] = carrito
+    return redirect('buscar_producto')  # Redirige de nuevo a la página de búsqueda
+
+def mostrar_carrito(request):
+    carrito = request.session.get('carrito', [])
+    return render(request, 'tienda/mostrar_carrito.html', {'carrito': carrito})
+
+def eliminar_del_carrito(request, id_producto):
+    carrito = request.session.get('carrito', [])
+    carrito = [prod for prod in carrito if prod['id'] != id_producto]
+    request.session['carrito'] = carrito
+    return redirect('mostrar_carrito')
+
+def vaciar_carrito(request):
+    request.session['carrito'] = []
+    return redirect('mostrar_carrito')
+
+
