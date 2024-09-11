@@ -6,10 +6,11 @@ def validate_stock(value):
         raise ValidationError('El stock no puede ser negativo.')
 
 class Producto(models.Model):
-    nombre = models.CharField(max_length=200)
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    nombre = models.CharField(max_length=100)
     descripcion = models.TextField()
-    stock = models.IntegerField(validators=[validate_stock])
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    stock = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

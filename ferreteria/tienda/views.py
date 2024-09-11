@@ -111,13 +111,29 @@ def editar_perfil(request):
         form = CustomUserChangeForm(instance=request.user)
     return render(request, 'tienda/editar_perfil.html', {'form': form})
 
-#Vista del carrito
+# Vista del carrito
+from django.shortcuts import redirect, get_object_or_404
+from tienda.models import Producto
+
 def agregar_al_carrito(request, id_producto):
-    producto = Producto.objects.get(id=id_producto)
+    # Obtener el producto a partir del id_producto
+    producto = get_object_or_404(Producto, id=id_producto)
+    
+    # Agregar el producto al carrito (almacenado en la sesión)
     carrito = request.session.get('carrito', [])
-    carrito.append({'id': id_producto, 'nombre': producto.nombre, 'precio': producto.precio})
+    carrito.append({
+        'nombre': producto.nombre,
+        'precio': producto.precio
+    })
+    
+    # Guardar el carrito de nuevo en la sesión
     request.session['carrito'] = carrito
-    return redirect('buscar_producto')  # Redirige de nuevo a la página de búsqueda
+    
+    # Redirigir a la página de productos o carrito
+    return redirect('buscar_producto')
+
+
+
 
 def mostrar_carrito(request):
     carrito = request.session.get('carrito', [])
@@ -125,12 +141,14 @@ def mostrar_carrito(request):
 
 def eliminar_del_carrito(request, id_producto):
     carrito = request.session.get('carrito', [])
-    carrito = [prod for prod in carrito if prod['id'] != id_producto]
+    carrito = [prod for prod in carrito if prod['id_producto'] != id_producto]  # Usamos id_producto
     request.session['carrito'] = carrito
     return redirect('mostrar_carrito')
+
 
 def vaciar_carrito(request):
     request.session['carrito'] = []
     return redirect('mostrar_carrito')
+
 
 

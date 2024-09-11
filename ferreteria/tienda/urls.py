@@ -15,9 +15,8 @@ urlpatterns = [
     path('profile/editar/', views.editar_perfil, name='editar_perfil'),
 
     path('carrito/', views.mostrar_carrito, name='mostrar_carrito'),
-    path('agregar_al_carrito/<int:producto_id>/', views.agregar_al_carrito, name='agregar_al_carrito'),
-    path('mostrar-carrito/', views.mostrar_carrito, name='mostrar_carrito'),
-    path('eliminar-del-carrito/<int:producto_id>/', views.eliminar_del_carrito, name='eliminar_del_carrito'),
+    path('agregar-al-carrito/<int:id_producto>/', views.agregar_al_carrito, name='agregar_al_carrito'),
+    path('eliminar-del-carrito/<int:id_producto>/', views.eliminar_del_carrito, name='eliminar_del_carrito'),
     path('vaciar-carrito/', views.vaciar_carrito, name='vaciar_carrito'),
 ]
 
